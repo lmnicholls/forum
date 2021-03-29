@@ -5,6 +5,9 @@ button.addEventListener('click', function () {
   // access the textarea box
   var post = document.getElementsByTagName('textarea')[0].value;
 
+  // create a new div to hold the post
+  var postDiv = document.createElement('div');
+
   // create a new p1 to hold the post
   var p1 = document.createElement('p');
 
@@ -14,6 +17,12 @@ button.addEventListener('click', function () {
   // create a new p2 to hold the post
   var p2 = document.createElement('p');
 
+  // create delete button
+  var delBtn = document.createElement("input");
+  delBtn.setAttribute("type", "button");
+  delBtn.setAttribute("value", "Delete");
+  delBtn.setAttribute("id", "btnDelete");
+
   // add hr
   var hr = document.createElement("HR");
 
@@ -22,11 +31,20 @@ button.addEventListener('click', function () {
   p1.innerHTML = post;
   p2.innerHTML = text + userName.bold();
   
+  // add posts to div element -- rework this?????
+  postDiv.prepend(hr);
+  postDiv.prepend(delBtn);
+  postDiv.prepend(p2);
+  postDiv.prepend(p1);
+
   // access the div for posts
   const posts = document.getElementsByClassName("posts")[0];
 
-  // add posts to div element
-  posts.prepend(hr);
-  posts.prepend(p2);
-  posts.prepend(p1);
+  posts.prepend(postDiv);
+
+  // add a delete button event listener
+  delBtn.addEventListener('click', function () {
+    this.parentElement.remove();
+  }, false);
 });
+
