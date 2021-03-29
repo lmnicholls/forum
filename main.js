@@ -14,6 +14,9 @@ button.addEventListener('click', function () {
   // create a new p2 to hold the post
   var p2 = document.createElement('p');
 
+  // add hr
+  var hr = document.createElement("HR");
+
   // Add innter HTML to p1 and p2
   var text = "Posted by: ";
   p1.innerHTML = post;
@@ -23,6 +26,7 @@ button.addEventListener('click', function () {
   const posts = document.getElementsByClassName("posts")[0];
 
   // add posts to div element
+  posts.prepend(hr);
   posts.prepend(p2);
   posts.prepend(p1);
 });
